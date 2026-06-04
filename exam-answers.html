@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Technical Screening Exam — Sudeep Kumar</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; font-size: 11pt; color: #111; background: #fff; }
+  .page { max-width: 780px; margin: 0 auto; padding: 32px 40px; }
+
+  .header-logo { text-align: center; border-bottom: 2px solid #1e2d4f; padding-bottom: 14px; margin-bottom: 18px; }
+  .header-logo h1 { font-size: 20pt; font-weight: bold; color: #1e2d4f; }
+  .header-logo h2 { font-size: 13pt; color: #2e5096; font-weight: bold; margin-top: 4px; }
+  .header-logo p { font-size: 9pt; color: #555; font-style: italic; margin-top: 3px; }
+
+  .instruction-box { background: #eef2f8; border: 1px solid #b0bfd6; border-left: 4px solid #2e5096; padding: 12px 16px; margin-bottom: 20px; border-radius: 2px; }
+  .instruction-box p { font-size: 9.5pt; font-weight: bold; margin-bottom: 6px; }
+  .instruction-box ol { padding-left: 18px; }
+  .instruction-box li { font-size: 9.5pt; margin-bottom: 3px; }
+
+  .meta-row { display: flex; justify-content: space-between; margin-bottom: 22px; font-size: 10pt; }
+  .meta-row span { border-bottom: 1px solid #333; min-width: 200px; padding: 0 4px 2px 4px; }
+
+  .section-header { background: #1e2d4f; color: #fff; font-size: 11.5pt; font-weight: bold; padding: 8px 14px; margin: 24px 0 14px 0; border-radius: 2px; }
+
+  .question { margin-bottom: 18px; }
+  .question p.q { font-size: 10.5pt; margin-bottom: 6px; line-height: 1.5; }
+  .question p.q strong { font-weight: bold; }
+  .answer-box { border: 1px solid #bbb; border-radius: 2px; padding: 10px 12px; background: #fdfeff; font-size: 10pt; line-height: 1.65; color: #1a1a1a; }
+  .answer-box p { margin-bottom: 6px; }
+  .answer-box p:last-child { margin-bottom: 0; }
+  .answer-box ul, .answer-box ol { padding-left: 18px; margin-top: 4px; }
+  .answer-box li { margin-bottom: 4px; }
+  .answer-box code { background: #f0f0f0; padding: 1px 4px; border-radius: 2px; font-size: 9pt; font-family: monospace; }
+  .answer-box .label { font-weight: bold; }
+
+  .declaration-box { border: 1px solid #bbb; padding: 14px 16px; margin-top: 28px; border-radius: 2px; background: #fafafa; }
+  .declaration-box p { font-size: 9.5pt; color: #444; line-height: 1.6; margin-bottom: 14px; }
+  .sig-row { display: flex; gap: 40px; font-size: 10pt; }
+  .sig-row div { display: flex; flex-direction: column; gap: 4px; }
+  .sig-row span.val { border-bottom: 1px solid #333; min-width: 200px; padding-bottom: 2px; }
+
+  @media print {
+    body { font-size: 10.5pt; }
+    .page { padding: 20px 28px; }
+    .section-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .instruction-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header-logo">
+    <h1>AI Automation Developer</h1>
+    <h2>Technical Screening Exam</h2>
+    <p>Better Call Centers / El Paso Water Quality LLC</p>
+  </div>
+
+  <div class="instruction-box">
+    <p>INSTRUCTIONS — READ CAREFULLY</p>
+    <ol>
+      <li>Answer every question in English, in your own words.</li>
+      <li>Be specific and technical. Real, detailed answers are what we are looking for.</li>
+      <li>If you do not know something, say so honestly. Do not pretend.</li>
+      <li>You may use a computer, but answers copied from AI tools without understanding will be obvious in the practical test that follows.</li>
+      <li>The strongest candidates will be invited to a short practical project.</li>
+    </ol>
+  </div>
+
+  <div class="meta-row">
+    <div>Name: <span>Sudeep Kumar</span></div>
+    <div>Date: <span>June 3, 2026</span></div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section-header">Section 1 — APIs &amp; Integrations</div>
+
+  <div class="question">
+    <p class="q"><strong>Q1.</strong> In simple terms, explain what an API is and what a webhook is. What is the difference between the two, and when would you use each one?</p>
+    <div class="answer-box">
+      <p>An API is like a menu at a restaurant — you send a request asking for something specific and you get a response back. You are the one initiating the call. For example, if I want to load a customer's profile, I call <code>GET /customers/123</code> and the server sends me back the data. APIs are pull-based — you ask, you receive.</p>
+      <p>A webhook is the opposite — it's event-driven and push-based. Instead of my app asking "did anything change?", the other system calls my URL automatically when something happens. Like a doorbell — I don't keep going to the door to check; the bell rings when someone arrives.</p>
+      <p>I use APIs when I need to fetch or update data on demand — like loading a dashboard or submitting a form. I use webhooks when I need to react to an event in real time — like triggering an n8n workflow the moment a new lead is added in a CRM, without any polling. In my current work, most of my automation triggers are webhooks because they're instant and don't waste API quota checking for changes that may not have happened.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="q"><strong>Q2.</strong> Imagine you need to connect two apps: when a new lead is added in a CRM, an automatic WhatsApp message should be sent to that lead. Walk me through, step by step, how you would build this. Mention the tools, the APIs, and the flow of data.</p>
+    <div class="answer-box">
+      <p>This is almost exactly a pattern I've built. Here's how I'd do it:</p>
+      <ol>
+        <li><span class="label">CRM webhook setup:</span> In the CRM (say HubSpot or Zoho), I'd configure a webhook that fires on "Contact Created". This sends a POST request with the lead's details — name, phone number, email — to a URL I control.</li>
+        <li><span class="label">n8n receives it:</span> That URL is an n8n Cloud webhook trigger. n8n receives the payload and I add a Set node right after it to normalise the data — phone numbers often come in inconsistent formats, so I clean them to E.164 (<code>+12125551234</code>).</li>
+        <li><span class="label">Twilio sends WhatsApp:</span> n8n then calls the Twilio API — POST to <code>https://api.twilio.com/2010-04-01/Accounts/{SID}/Messages.json</code> with <code>To: whatsapp:+{phone}</code>, <code>From: whatsapp:+14155238886</code>, and the message body.</li>
+        <li><span class="label">Update CRM:</span> After sending, n8n calls the CRM's API to update the lead record — sets a "WhatsApp Sent" field to true with the timestamp, so the sales team can see it in the CRM.</li>
+        <li><span class="label">Error handling:</span> If Twilio returns an error (invalid number, unverified recipient), n8n logs it to Supabase and optionally sends an alert to the team on Slack.</li>
+      </ol>
+      <p>Tools: n8n Cloud (automation), Twilio (WhatsApp API), Supabase (logging), CRM native webhooks. I've built this exact pattern at Birbal AI for notification workflows — the logic is the same, just different services on each end.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="q"><strong>Q3.</strong> What is the difference between a GET request and a POST request? Give a real example of when you would use each.</p>
+    <div class="answer-box">
+      <p><span class="label">GET</span> is for reading/fetching data. It doesn't change anything on the server. The parameters go in the URL. Example: when my React dashboard loads, it calls <code>GET /appointments?date=2026-06-03</code> to retrieve today's appointments from Supabase. Refreshing the page calls the same endpoint safely — it only reads, never writes.</p>
+      <p><span class="label">POST</span> is for sending data — creating something new or triggering an action. The data goes in the request body, not the URL. Example: when a user submits the appointment form in my WhatsApp reminder app, the frontend calls <code>POST /appointments</code> with the customer name, phone, and time in the JSON body. This creates a new row in the database.</p>
+      <p>The simple rule I follow: if it's reading, use GET. If it's writing, creating, or triggering something, use POST (or PATCH for updates, DELETE for removal).</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="q"><strong>Q4.</strong> How do you keep API keys and secret credentials secure in a project? Name at least two specific methods.</p>
+    <div class="answer-box">
+      <ol>
+        <li><span class="label">Environment variables + .gitignore:</span> I never hardcode API keys in source code. All secrets go in a <code>.env</code> file which is added to <code>.gitignore</code> so it never gets committed to GitHub. In Vite/React projects I prefix frontend-safe values with <code>VITE_</code> so only the values that must be on the client are exposed — server-side keys stay completely out of the bundle.</li>
+        <li><span class="label">n8n Credentials store:</span> For all automation workflows, I use n8n's built-in encrypted credentials system. The Twilio Account SID, Auth Token, Supabase keys — all stored as named credentials in n8n, never visible in workflow JSON or execution logs. If someone reads the workflow code, they see <code>credential: Twilio</code>, not the actual key.</li>
+        <li><span class="label">Supabase Row Level Security:</span> Even with a public anon key, I use RLS policies so the key can only perform the specific operations the app needs. Exposing an anon key without RLS would let anyone read or write your entire database.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="q"><strong>Q5.</strong> You call an external API and it returns an error 429. What does that mean and how would you handle it in your code?</p>
+    <div class="answer-box">
+      <p>429 is "Too Many Requests" — the API is rate limiting me because I've sent too many calls in a short window. Every API has a limit (e.g. Twilio allows X messages per second on trial).</p>
+      <p>How I handle it:</p>
+      <ol>
+        <li>Check the <code>Retry-After</code> header in the response — the API usually tells you exactly how many seconds to wait before retrying.</li>
+        <li>Implement exponential backoff — wait 1s, retry. If 429 again, wait 2s, retry. Then 4s, 8s. This prevents hammering the API repeatedly.</li>
+        <li>In n8n, I use the Wait node to pause execution for the specified time before the next attempt.</li>
+        <li>Long term, I'd also look at batching — instead of calling the API once per item, bundle multiple items into one call where the API supports it. And cache responses so I'm not re-fetching the same data repeatedly.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section-header">Section 2 — WhatsApp &amp; Messaging Automation</div>
+
+  <div class="question">
+    <p class="q"><strong>Q6.</strong> What do you know about the WhatsApp Business API (or the WhatsApp Cloud API)? Have you used it or a similar service like Twilio? Describe specifically what you built or how it works.</p>
+    <div class="answer-box">
+      <p>Yes, I've worked with Twilio's WhatsApp API. Both Meta's WhatsApp Cloud API and Twilio work on the same underlying WhatsApp Business platform — the difference is that Twilio wraps it in a simpler REST interface while Meta's direct API gives you more control (and lower cost at scale) but requires Business Manager verification and pre-approved message templates for outbound messages.</p>
+      <p>What I just built: A complete WhatsApp appointment reminder system. The flow is:</p>
+      <ol>
+        <li>Customer fills a React form → data saved to Supabase → n8n webhook is triggered</li>
+        <li>n8n calls Twilio's API (<code>POST .../Messages.json</code>) with <code>To: whatsapp:+{phone}</code>, <code>From: whatsapp:+14155238886</code> (sandbox number), and the confirmation message body</li>
+        <li>A separate scheduled n8n workflow runs every 15 minutes, queries Supabase for appointments within the next hour where <code>reminder_sent = false</code>, sends each one a reminder via Twilio, and marks <code>reminder_sent = true</code></li>
+      </ol>
+      <p>The Twilio sandbox requires recipients to opt in by sending a join message. For production with Meta's Cloud API directly, you'd need an approved message template and a verified Business phone number.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="q"><strong>Q7.</strong> A business wants an automated agent that: (a) sends appointment reminders, (b) receives replies from customers, and (c) alerts a manager if a customer does not reply within 30 minutes. Explain how you would design this system. What handles the timing? Where is the data stored?</p>
+    <div class="answer-box">
+      <p><span class="label">Sending reminders (a):</span> A scheduled n8n workflow runs every 15 minutes. It queries Supabase for appointments in the next hour where <code>reminder_sent = false</code>. For each appointment, it fires a Twilio WhatsApp message and sets <code>reminder_sent = true</code> and <code>reminder_sent_at = now()</code>.</p>
+      <p><span class="label">Receiving replies (b):</span> I configure a Twilio webhook URL that points to a second n8n workflow. When a customer replies on WhatsApp, Twilio POSTs to that URL with the sender's number and their message. n8n looks up the appointment by phone number, stores the reply text and <code>replied_at</code> timestamp in Supabase, and marks <code>reply_received = true</code>.</p>
+      <p><span class="label">30-minute alert (c):</span> Another scheduled n8n workflow runs every 5 minutes. It queries for rows where <code>reminder_sent = true</code> AND <code>reply_received = false</code> AND <code>reminder_sent_at &lt; now - 30 minutes</code> AND <code>alert_sent = false</code>. For each match, it sends a Slack/email notification to the manager and marks <code>alert_sent = true</code> so the alert only fires once.</p>
+      <p><span class="label">Data storage:</span> Supabase (PostgreSQL) — one <code>appointments</code> table with columns: <code>id, customer_name, phone_number, appointment_time, reminder_sent, reminder_sent_at, reply_received, replied_at, reply_text, alert_sent</code>.</p>
+      <p><span class="label">Timing is handled entirely by n8n's Schedule Trigger nodes</span> — no external cron server needed.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="q"><strong>Q8.</strong> What is the difference between sending a one-way notification message and building a two-way conversational bot? Which is harder and why?</p>
+    <div class="answer-box">
+      <p>One-way notification is fire-and-forget — trigger event, format message, send, done. It's stateless. You don't care what the customer replies.</p>
+      <p>Two-way conversational bot is significantly harder because:</p>
+      <ol>
+        <li><span class="label">State management:</span> You need to know where in the conversation each customer is. Did they just receive the first message? Did they reply "maybe"? Are they on step 2 of a 4-step confirmation? You need session state stored per-user, per-conversation.</li>
+        <li><span class="label">Unpredictable input:</span> People don't reply the way you expect. They use abbreviations, different languages, typos, or completely off-topic messages. You need intent detection or at least simple NLP to classify their reply.</li>
+        <li><span class="label">Concurrency:</span> Multiple customers can be at different stages simultaneously. The system needs to handle 100 open conversations without mixing up who said what.</li>
+        <li><span class="label">Timeouts and re-engagement:</span> What if they don't reply? Do you follow up? After how long? How many times?</li>
+      </ol>
+      <p>I've built one-way notifications reliably. Two-way bots I've designed architecturally — the core challenge is always the state machine and edge cases, not the messaging API itself.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section-header">Section 3 — AI Calling Agents</div>
+
+  <div class="question">
+    <p class="q"><strong>Q9.</strong> We want an AI agent that can make outbound phone calls to confirm appointments and understand the customer's spoken response. What tools or services would you use to build this? Name specific platforms (for voice, for speech-to-text, for the AI brain).</p>
+    <div class="answer-box">
+      <p>Here's the stack I'd use:</p>
+      <ul>
+        <li><span class="label">Voice / outbound calls:</span> Twilio Voice or Vapi.ai. Vapi actually bundles most of the pipeline for you — it handles the call, STT, and TTS as one service and gives you a webhook to plug in your own AI. Twilio is more flexible but requires wiring each component yourself.</li>
+        <li><span class="label">Speech-to-text (STT):</span> Deepgram — it has the lowest latency of the options I've researched, handles real-world accents well, and has noise cancellation built in. Google Speech-to-Text is also solid if you're already in the Google ecosystem.</li>
+        <li><span class="label">AI brain:</span> Claude (Anthropic) or GPT-4. I'd send the transcribed text to the model with a system prompt that defines the agent's purpose — "you are a scheduling assistant confirming an appointment for {name} at {time}" — and let it decide the reply.</li>
+        <li><span class="label">Text-to-speech (TTS):</span> ElevenLabs for natural-sounding voice, or Google TTS if latency is the priority.</li>
+      </ul>
+      <p>The overall flow: Twilio dials → Deepgram transcribes customer speech → Claude processes it → ElevenLabs converts Claude's reply to audio → Twilio plays it back. n8n can orchestrate the webhooks between these services and update the appointment status in Supabase based on the outcome.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="q"><strong>Q10.</strong> An AI calling agent calls a customer, but the customer answers with background noise and an unclear response. How would you design the system to handle situations where the AI does not understand?</p>
+    <div class="answer-box">
+      <p>I'd design layered fallbacks:</p>
+      <ol>
+        <li><span class="label">Noise filtering:</span> Enable noise suppression in Deepgram — it filters out background audio before transcribing. Add a small silence buffer (300–500ms) after the customer stops speaking before sending to STT, so you don't cut them off mid-word.</li>
+        <li><span class="label">Confidence threshold:</span> If Deepgram's confidence score on the transcript is below ~0.65, don't try to interpret it. Instead the agent says: "I'm sorry, I didn't catch that clearly. Could you repeat that?"</li>
+        <li><span class="label">Simplify after 2 retries:</span> If after two attempts it still can't understand, the agent simplifies: "I just need a yes or no — can you say YES to confirm your appointment, or NO to cancel?"</li>
+        <li><span class="label">Hard fallback after 3 failures:</span> The agent says "Let me connect you with our team" and either transfers to a live agent via Twilio call transfer or ends the call and triggers a follow-up SMS/WhatsApp asking them to reply by text.</li>
+        <li><span class="label">Log everything:</span> All unclear responses get logged to Supabase with the raw audio/transcript for review — useful for improving the system over time.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section-header">Section 4 — Databases &amp; Dashboards</div>
+
+  <div class="question">
+    <p class="q"><strong>Q11.</strong> You need to build a live dashboard that shows, in real time: today's appointments, which seller is assigned to each, and the status of each one. What database would you use, and how would you make the dashboard update in real time without the user refreshing the page?</p>
+    <div class="answer-box">
+      <p>I'd use <span class="label">Supabase (PostgreSQL)</span> — and I've already done exactly this.</p>
+      <p>Supabase has a built-in Realtime feature powered by WebSockets. On the React frontend, you subscribe to a table channel and any INSERT, UPDATE, or DELETE on that table instantly pushes the change to every connected client without polling.</p>
+      <p>The setup in code is straightforward:</p>
+      <p><code>supabase.channel('appointments').on('postgres_changes', &#123; event: '*', schema: 'public', table: 'appointments' &#125;, callback).subscribe()</code></p>
+      <p>Whenever n8n updates an appointment status (e.g. marks <code>confirmation_sent = true</code>), the dashboard immediately reflects it — no refresh needed. I built this for the WhatsApp reminder project and the live update works reliably.</p>
+      <p>For the seller assignment, I'd add a <code>seller_id</code> foreign key on the appointments table joining to a <code>sellers</code> table. The dashboard query joins them: <code>appointments?select=*,sellers(name)&amp;appointment_date=eq.today</code>.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="q"><strong>Q12.</strong> Explain the difference between a SQL database (like PostgreSQL) and a NoSQL database (like Firebase). For a real-time operations dashboard, which would you choose and why?</p>
+    <div class="answer-box">
+      <p><span class="label">SQL (PostgreSQL):</span> Structured, relational, strict schema. You define tables, columns, and data types upfront. Rows in different tables are linked by foreign keys. Excellent for complex queries with JOINs — e.g. "give me all appointments today with the seller name and customer status". Data stays consistent because of constraints.</p>
+      <p><span class="label">NoSQL (Firebase):</span> Flexible, document-based, schema-free. You store JSON documents — good when your data shape changes frequently or you're prototyping fast. Firebase Realtime Database and Firestore both have real-time sync built in. But running relational queries ("give me all appointments for seller X that have status pending") is awkward — you denormalise and duplicate data instead of joining.</p>
+      <p>For a real-time operations dashboard I'd choose <span class="label">PostgreSQL via Supabase</span>. Operations data is structured and relational — appointments have customers, sellers, statuses, timestamps. I need proper queries, filtering, and aggregations. Supabase gives me Postgres for the query power and Realtime for the live updates. Firebase would work for simple dashboards but becomes painful once the data model has any meaningful relationships.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section-header">Section 5 — GPS Tracking</div>
+
+  <div class="question">
+    <p class="q"><strong>Q13.</strong> We want to track field workers who distribute flyers, to know if they are moving or staying in one place too long. How would you capture their location? How would you detect if someone has not moved for, say, 30 minutes? What technology runs on the worker's phone?</p>
+    <div class="answer-box">
+      <p><span class="label">Capturing location:</span> On the worker's phone, a simple Progressive Web App (PWA) uses the browser's <code>navigator.geolocation.watchPosition()</code> API to capture GPS coordinates every 2–3 minutes. Each reading — <code>&#123; worker_id, lat, lng, accuracy, timestamp &#125;</code> — is sent to a Supabase <code>worker_locations</code> table via a POST request. If they have no data connection momentarily, the app queues the points and sends them when back online. No native app installation needed.</p>
+      <p><span class="label">Detecting non-movement:</span> An n8n scheduled workflow runs every 5 minutes. For each worker, it fetches their last 10 location records. Using the Haversine formula, it calculates the distance between the oldest and newest point in that window. If the total displacement is under ~50 metres AND the time span covers 30+ minutes, it flags the worker as stationary and sends an alert (WhatsApp/Slack) to the supervisor. After alerting, it marks the window as processed so the same period doesn't trigger a second alert.</p>
+      <p><span class="label">Technology on the phone:</span> A mobile-responsive PWA built in React — no app store required, works on any smartphone with GPS. GPS accuracy is typically 5–15m outdoors which is sufficient for this use case. I'd also add a battery-saving mode that reduces ping frequency if the worker has been moving continuously for a long time.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section-header">Section 6 — AI Integration</div>
+
+  <div class="question">
+    <p class="q"><strong>Q14.</strong> Have you ever integrated an AI model (like the Claude API or OpenAI API) into an application? Describe what you built. If you have not, explain how you would send a request to an AI model and use its response in your code.</p>
+    <div class="answer-box">
+      <p>Yes. At Birbal AI I integrated OpenAI's GPT-4 API into our content management system. The workflow: a content editor submits a brief (topic, tone, word count) → an n8n workflow receives it via webhook → n8n calls the OpenAI Chat Completions API → the generated draft is pushed back into the CMS as a WordPress draft via REST API. The editor then refines it from there.</p>
+      <p>The API call is a standard POST:</p>
+      <p><code>POST https://api.openai.com/v1/chat/completions</code><br/>
+      Headers: <code>Authorization: Bearer &#123;API_KEY&#125;</code>, <code>Content-Type: application/json</code><br/>
+      Body: <code>&#123; "model": "gpt-4", "messages": [&#123; "role": "user", "content": prompt &#125;] &#125;</code></p>
+      <p>The response comes back as <code>data.choices[0].message.content</code> — a plain string you can use however you need.</p>
+      <p>I've also used Claude (Anthropic) more recently — same pattern, different endpoint and model name. I currently use Claude Code as a development assistant tool, which has significantly accelerated how fast I can wire up integrations and debug workflows.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="q"><strong>Q15.</strong> What is a 'prompt' when working with an AI model, and why does the way you write it matter? Give an example of a good prompt versus a bad prompt for a specific task.</p>
+    <div class="answer-box">
+      <p>A prompt is the instruction you send to the AI model — the text that defines what you want it to do, in what format, with what constraints. The model has no memory of your project or context unless you put it in the prompt, so the quality of your output is directly proportional to how clearly you specify the task.</p>
+      <p><span class="label">Bad prompt:</span> "Write a WhatsApp message about an appointment"</p>
+      <p>The AI doesn't know who the customer is, what the appointment is for, what tone to use, how long the message should be, or what to include. The output will be generic and probably unusable.</p>
+      <p><span class="label">Good prompt:</span> "You are a professional scheduling assistant for a water quality company. Write a WhatsApp confirmation message for a customer named &#123;customer_name&#125; whose appointment is on &#123;date&#125; at &#123;time&#125;. Keep it under 2 sentences. Be friendly and professional. Do not include marketing language or emojis. End with 'Reply STOP to unsubscribe.'"</p>
+      <p>The good prompt specifies: role (who the AI is), task (what to write), variables (what to substitute), constraints (length, tone, what to avoid), and required elements. The output is predictable, consistent, and immediately usable in the application.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="section-header">Section 7 — Problem Solving &amp; Work Style</div>
+
+  <div class="question">
+    <p class="q"><strong>Q16.</strong> Describe the most complex automation or integration project you have personally built. What was the goal, what tools did you use, what was the hardest part, and how did you solve it?</p>
+    <div class="answer-box">
+      <p><span class="label">Project:</span> AI-Powered CMS at Birbal AI — a full editorial workflow system where AI generates content, editors review it, managers approve it, and it publishes to WordPress automatically.</p>
+      <p><span class="label">Goal:</span> Remove the manual overhead of content production — a brief comes in, AI produces a draft, the right people are notified to review it, it flows through approval stages, and publishes without human intervention beyond editing.</p>
+      <p><span class="label">Tools:</span> React 18 + TypeScript (frontend), n8n Cloud (40+ webhook endpoints for each workflow stage), OpenAI API (content generation), Supabase (state management and audit logs), WordPress REST API (publishing), TipTap + Hocuspocus (real-time multi-user editing in the browser).</p>
+      <p><span class="label">Hardest part:</span> State integrity across distributed workflows. A piece of content moves between states — draft → in review → revision requested → approved → published. Multiple n8n workflows could theoretically act on the same article simultaneously and create race conditions or double-notifications.</p>
+      <p><span class="label">How I solved it:</span> I made Supabase the single source of truth. Every workflow begins by reading the current <code>status</code> field and exits immediately if the status isn't what it expects. Updates happen atomically — read-check-update in a single database transaction. This prevented duplicate executions and made the whole pipeline auditable. Any engineer can look at the Supabase logs and see exactly what happened to every piece of content and when.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="q"><strong>Q17.</strong> You are building a system and it is not working. The data is not arriving from one app to another. Walk me through your debugging process, step by step. How do you find where the problem is?</p>
+    <div class="answer-box">
+      <ol>
+        <li><span class="label">Confirm the source is sending:</span> I open Postman and manually send a request to the first endpoint — whether that's a webhook URL or an API. This tells me immediately whether the issue is in the sender or the receiver. If Postman gets the expected response, the source is fine.</li>
+        <li><span class="label">Check n8n execution logs:</span> n8n shows exactly what data each node received and what it returned. I look for the first node where the output is empty, null, or shaped differently than expected. 90% of integration bugs are a data shape issue — the field is nested one level deeper than I thought.</li>
+        <li><span class="label">Inspect the payload in the browser:</span> If the issue is on the frontend side, I open Chrome DevTools → Network tab and check the actual request being sent and the response coming back. This catches CORS errors, wrong URLs, or malformed JSON bodies.</li>
+        <li><span class="label">Test each service independently:</span> If Supabase isn't updating, I test the query directly in Supabase's SQL editor. If Twilio isn't sending, I check their console error logs. Isolate each piece.</li>
+        <li><span class="label">Check credentials and environment:</span> More times than I'd like to admit, the issue is an expired API key, the wrong .env variable loaded, or a production URL being called in a dev environment. I always verify these early now.</li>
+        <li><span class="label">Add temporary logging:</span> If none of the above works, I add a Code node in n8n right after the suspicious point and log <code>$json</code> to trace what the data looks like at that exact moment.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="q"><strong>Q18.</strong> This role requires you to work independently with minimal supervision, figuring out solutions on your own. Describe a time you had to learn a completely new technology or tool by yourself to finish a project. How did you do it?</p>
+    <div class="answer-box">
+      <p>When I joined Birbal AI, the project required real-time multi-user document editing — think Google Docs, but inside a custom CMS. I'd never used TipTap or Hocuspocus (the collaboration WebSocket server) before. I had about two weeks to deliver it.</p>
+      <p>My approach: I read the TipTap documentation end to end in one sitting — not to memorise it, but to understand what was possible and how the pieces fit together. Then I built the simplest working version I could in day one: a basic editor where two browser tabs could type simultaneously. Broken in several ways, but it worked enough to prove the core concept.</p>
+      <p>From there I added capabilities one at a time — user cursors, track changes, inline comments — each one a new problem to solve. When I hit something the docs didn't cover, I read through the Hocuspocus source code on GitHub directly. That's how I figured out how it handles document conflict resolution when a user reconnects after going offline.</p>
+      <p>The thing I've learned about picking up new tools: start with a working prototype, even a bad one, on day one. Reading without building doesn't stick. Building without reading wastes time reinventing what's already documented. I do both in parallel.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="q"><strong>Q19.</strong> Be honest: looking at the list of projects in the job description (WhatsApp agents, AI calling agents, GPS tracking, CRM integration, dashboards), which one are you MOST confident building right now, and which one would you need to learn? Why?</p>
+    <div class="answer-box">
+      <p><span class="label">Most confident:</span> WhatsApp agents and real-time dashboards. I just built a complete WhatsApp appointment reminder system — React frontend, Supabase database, n8n automation, Twilio WhatsApp API, live dashboard with Supabase Realtime. That's not something I studied for this test; it's a pattern I use regularly. CRM integration is also familiar — I've built n8n webhook pipelines connecting CRMs to notification systems at Birbal AI.</p>
+      <p><span class="label">Would need to build on:</span> AI calling agents. I understand the architecture — Twilio Voice for the call, Deepgram for speech-to-text, Claude or GPT-4 as the brain, ElevenLabs for TTS — and I've used all these services individually. But I haven't assembled a complete outbound voice agent end to end. I'd need a few days to get comfortable with the Twilio Voice call flow and the real-time audio streaming pipeline specifically.</p>
+      <p>GPS tracking I've thought through but haven't shipped in production. The browser Geolocation API + Supabase + n8n pattern I described earlier is my genuine approach — I'd prototype it to validate before committing to it.</p>
+      <p>I'd rather be honest about this than pretend I've shipped everything. What I am confident in is that my track record with n8n + APIs + Supabase means I can learn and deliver the unfamiliar pieces quickly.</p>
+    </div>
+  </div>
+
+  <div class="question">
+    <p class="q"><strong>Q20.</strong> If you were given access to AI coding tools (like Claude) to help you build faster, how would you use them in your daily work? What would you still need to understand yourself, and what would you let the AI help with?</p>
+    <div class="answer-box">
+      <p>I already use Claude Code daily — including for this practical test. So this isn't hypothetical for me.</p>
+      <p><span class="label">What I use AI for:</span> Boilerplate code I'd write the same way every time (form components, API fetch wrappers, SQL migrations), looking up exact syntax for APIs I haven't used in a while, writing the first draft of an n8n workflow or a Supabase schema, and debugging when I've been staring at the same error for too long and need a fresh angle.</p>
+      <p><span class="label">What I still own myself:</span></p>
+      <ul>
+        <li><span class="label">Architecture decisions</span> — how the data flows, what triggers what, where state lives. If I get the architecture wrong, no amount of AI-generated code fixes it.</li>
+        <li><span class="label">Debugging live systems</span> — reading n8n execution logs, understanding what a Supabase RLS error actually means, tracing a 429 back to a rate limit I didn't expect. The AI doesn't have access to my live system.</li>
+        <li><span class="label">Client requirements</span> — understanding what the business actually needs vs. what they literally asked for. That requires judgment, not code generation.</li>
+        <li><span class="label">Security and credentials</span> — I never let AI make decisions about what gets exposed, what stays server-side, or how auth is structured.</li>
+      </ul>
+      <p>The most important thing I've learned: AI makes you faster at building, but you still need to understand every line it produces. If I can't explain what the code does, I can't debug it when it breaks. And it will break.</p>
+    </div>
+  </div>
+
+  <!-- Declaration -->
+  <div class="declaration-box">
+    <p><strong>DECLARATION</strong><br/><br/>I confirm that all answers above are my own work and honestly represent my real knowledge and experience. I understand that I may be asked to demonstrate these skills in a live or practical setting.</p>
+    <div class="sig-row">
+      <div>
+        <span>Signature:</span>
+        <span class="val" style="font-family: 'Brush Script MT', cursive; font-size: 14pt;">Sudeep Kumar</span>
+      </div>
+      <div>
+        <span>Date:</span>
+        <span class="val">June 3, 2026</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
